@@ -1,0 +1,15 @@
+# API keys and secrets
+.env
+
+# Gradle files
+.gradle/
+**/build/
+local.properties
+*.iml
+
+# Android Studio / IntelliJ files
+.idea/
+
+# Temp test files
+test_gemini.py
+*.webp
