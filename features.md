@@ -62,10 +62,11 @@ graph TD
 - **동작 설명**: 시스템은 실시간 기상 상태에 따라 뒷배경에 다채로운 날씨 테마 컬러 그라디언트를 연출하고 특수 기상 애니메이션(빗방울, 눈송이)을 가동합니다.
 - **상세 명세**: [f06_weather_animations.md](file:///c:/Users/User/Documents/Mobile/features/f06_weather_animations.md)에서 Canvas 입자 물리 드로잉 및 지그재그 흔들림 눈송이 구현 기법을 확인할 수 있습니다.
 
-### 📄 [f07-지도 기반 위치 표시 (예정)](file:///c:/Users/User/Documents/Mobile/features/f07_map_integration.md)
+### 📄 [f07-지도 기반 위치 표시](file:///c:/Users/User/Documents/Mobile/features/f07_map_integration.md)
 - **관련 요구사항**: `FR-07`
-- **동작 설명**: Google Maps API 지도 연동을 통해 사용자의 실시간 GPS 위치 마킹과 주변 펫 생성 범위 시각화 및 반경 진입 감지를 목표로 기획되었습니다.
-- **상세 명세**: [f07_map_integration.md](file:///c:/Users/User/Documents/Mobile/features/f07_map_integration.md)에서 차기 지도 연동 설계 요소를 확인할 수 있습니다.
+- **관련 파일**: [MainActivity.kt](file:///c:/Users/User/Documents/Mobile/PetMaker/app/src/main/java/com/example/petmaker/MainActivity.kt), [MainScreen.kt](file:///c:/Users/User/Documents/Mobile/PetMaker/app/src/main/java/com/example/petmaker/ui/screens/MainScreen.kt), [MapStyles.kt](file:///c:/Users/User/Documents/Mobile/PetMaker/app/src/main/java/com/example/petmaker/ui/theme/MapStyles.kt)
+- **동작 설명**: Google Maps API 지도 연동을 통해 사용자의 실시간 GPS 위치 마킹, 주변 펫 생성 포탈 생성, 반경 진입 감지(40m) 및 지도 중심 복귀 처리를 수행합니다.
+- **상세 명세**: [f07_map_integration.md](file:///c:/Users/User/Documents/Mobile/features/f07_map_integration.md)에서 지도 연동 및 애니메이션 시각화 구현 방식을 확인할 수 있습니다.
 
 ### 📄 [f08-API Key 안전 관리 및 설정 기능](file:///c:/Users/User/Documents/Mobile/features/f08_api_key_management.md)
 - **관련 요구사항**: `FR-08`
@@ -73,11 +74,11 @@ graph TD
 - **동작 설명**: 외부 연동용 인증 키들을 텍스트 창에 직접 입력하고 저장할 수 있는 다이얼로그 기능입니다.
 - **상세 명세**: [f08_api_key_management.md](file:///c:/Users/User/Documents/Mobile/features/f08_api_key_management.md)에서 SharedPreferences 안전 적재 및 암호 토글 UI 구현을 확인할 수 있습니다.
 
-### 📄 [f09-펫 이미지 수집 및 자동 폴백 시스템](file:///c:/Users/User/Documents/Mobile/features/f09_image_generation_fallback.md)
+### 📄 [f09-펫 이미지 수집 및 관리 시스템](file:///c:/Users/User/Documents/Mobile/features/f09_image_generation_fallback.md)
 - **관련 요구사항**: `FR-09`
-- **관련 파일**: [GenerationScreen.kt](file:///c:/Users/User/Documents/Mobile/PetMaker/app/src/main/java/com/example/petmaker/ui/screens/GenerationScreen.kt), [FluxApi.kt](file:///c:/Users/User/Documents/Mobile/PetMaker/app/src/main/java/com/example/petmaker/data/remote/FluxApi.kt)
-- **동작 설명**: 이미지 생성 중 외부 API 자격 오류나 결제 한도 부족 등 연동 에러가 검출되면 무료 백업 서버로 즉시 경로를 전환 호출하여 펫 이미지를 차질 없이 완성합니다.
-- **상세 명세**: [f09_image_generation_fallback.md](file:///c:/Users/User/Documents/Mobile/features/f09_image_generation_fallback.md)에서 Replicate 예측 폴링 루프 및 HuggingFace 무료 FLUX 우회 처리 기술을 확인할 수 있습니다.
+- **관련 파일**: [GenerationScreen.kt](file:///c:/Users/User/Documents/Mobile/PetMaker/app/src/main/java/com/example/petmaker/ui/screens/GenerationScreen.kt), [OpenAiApi.kt](file:///c:/Users/User/Documents/Mobile/PetMaker/app/src/main/java/com/example/petmaker/data/remote/OpenAiApi.kt)
+- **동작 설명**: OpenAI 이미지 생성 API를 호출하여 실시간으로 고화질 펫 그래픽 일러스트를 생성하고, Base64 또는 URL 다운로드 구조를 통해 디바이스에 영구 저장합니다.
+- **상세 명세**: [f09_image_generation_fallback.md](file:///c:/Users/User/Documents/Mobile/features/f09_image_generation_fallback.md)에서 OpenAI 연동, Base64 파싱 및 URL 이미지 다운로드 캐싱 로직을 확인할 수 있습니다.
 
 ### 📄 [f10-도감 검색/필터링 및 편집(방생) 기능](file:///c:/Users/User/Documents/Mobile/features/f10_book_filters_and_edit.md)
 - **관련 요구사항**: `FR-10`
@@ -102,7 +103,7 @@ graph TD
 - **이미지 바인딩 및 캐시**: Coil AsyncImage
 - **날씨 수집**: OpenWeatherMap API
 - **AI 펫 정보 설계**: Google Gemini API
-- **AI 펫 비주얼화**: Replicate API (Flux-Schnell) / HuggingFace Inference API (FLUX.1-schnell)
+- **AI 펫 비주얼화**: OpenAI Image API (gpt-image-2)
 
 ### 3.2 로컬 데이터베이스 스키마 ([PetEntity](file:///c:/Users/User/Documents/Mobile/PetMaker/app/src/main/java/com/example/petmaker/data/local/PetEntity.java))
 도감 수집에 핵심이 되는 `pets` 테이블의 영구 저장 필드 스키마는 다음과 같이 설계되어 있습니다.
