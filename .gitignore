@@ -13,3 +13,14 @@ local.properties
 # Temp test files
 test_gemini.py
 *.webp
+
+# Temporary debug logs and files
+Petimage.md
+Record/
+diff_gen.txt
+logcat_debug.txt
+logcat_debug_utf8.txt
+petmaker_emulator.apk
+screen.png
+*.jpg
+

@@ -6,7 +6,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-@Database(entities = {PetEntity.class}, version = 1, exportSchema = false)
+@Database(entities = {PetEntity.class}, version = 2, exportSchema = false)
 @TypeConverters({TraitsConverter.class})
 public abstract class PetDatabase extends RoomDatabase {
     public abstract PetDao petDao();
